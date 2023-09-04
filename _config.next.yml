@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Rui·blog
+title: Rui·Blog
 subtitle: '奔赴山海，保持热爱'
 description: '心有所向，无问东西'
 keywords:
@@ -188,8 +188,8 @@ recent_posts:
 # 图标
   icon: fa fa-history
 # 最多多少文章链接
-  max_count:
+  max_count: 5
 
-#hexo-admin metadata
-metadata:
-  toc: true
+##hexo-admin metadata
+#metadata:
+#  toc: true

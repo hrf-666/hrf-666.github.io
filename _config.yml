@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Rui·blog
+title: Rui·Blog
 subtitle: '奔赴山海，保持热爱'
 description: '心有所向，无问东西'
 keywords:
@@ -200,6 +200,6 @@ hexo_submit_urls_to_search_engine:
 #  find_what: http://hrf-666.github.io/blog
 #  replace_with: https://hrf-666.com
 
-#hexo-admin metadata
-metadata:
-  toc: true
+##hexo-admin metadata
+#metadata:
+#  toc: true
