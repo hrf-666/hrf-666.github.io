@@ -79,7 +79,9 @@
   <entry>
     <title>图片展示</title>
     <url>/2023/08/24/%E5%9B%BE%E7%89%87%E5%B1%95%E7%A4%BA/</url>
-    <content><![CDATA[<h1 id="图片展示"><a href="#图片展示" class="headerlink" title="图片展示"></a>图片展示</h1><p><img src="https://huang-ruifang.gitee.io/pic-go/public/picture/flora-1.jpg" alt="flora-1"></p>
+    <content><![CDATA[<h1 id="图片展示"><a href="#图片展示" class="headerlink" title="图片展示"></a>图片展示</h1><span id="more"></span>
+
+<p><img src="https://huang-ruifang.gitee.io/pic-go/public/picture/flora-1.jpg" alt="flora-1"></p>
 <p><img src="https://huang-ruifang.gitee.io/pic-go/public/picture/leaves-bg.jpg" alt="leaves-bg"></p>
 <p><img src="https://huang-ruifang.gitee.io/pic-go/public/picture/yellow-flower-1.jpg" alt="yellow-flower-1"></p>
 <p><img src="https://huang-ruifang.gitee.io/pic-go/public/picture/weevil-1.jpg" alt="weevil-1"></p>
@@ -141,34 +143,53 @@
       </tags>
   </entry>
   <entry>
-    <title>测试</title>
-    <url>/2023/08/16/%E6%B5%8B%E8%AF%95/</url>
-    <content><![CDATA[<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><p>@<a href="%E6%A0%91%E7%BB%93%E6%9E%84">TOC</a></p>
+    <title>Hexo如何置顶文章</title>
+    <url>/2023/09/04/Hexo%E5%A6%82%E4%BD%95%E7%BD%AE%E9%A1%B6%E6%96%87%E7%AB%A0/</url>
+    <content><![CDATA[<h1 id="Hexo如何置顶文章"><a href="#Hexo如何置顶文章" class="headerlink" title="Hexo如何置顶文章"></a>Hexo如何置顶文章</h1><span id="more"></span>
+<h2 id="1-需要主题支持"><a href="#1-需要主题支持" class="headerlink" title="1. 需要主题支持"></a>1. 需要主题支持</h2><p>   3-hexo主题</p>
+<h2 id="2-安装插件"><a href="#2-安装插件" class="headerlink" title="2. 安装插件"></a>2. 安装插件</h2>   <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-topindex --save</span><br></pre></td></tr></table></figure>
+<h2 id="3-设置置顶"><a href="#3-设置置顶" class="headerlink" title="3. 设置置顶"></a>3. 设置置顶</h2><p>   给需要置顶的文章加入top参数，如下：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"> ---</span><br><span class="line">title: Hexo如何置顶文章</span><br><span class="line">date: 2023-01-23 11:41:48</span><br><span class="line">top: 1</span><br><span class="line">categories:</span><br><span class="line"><span class="bullet">-</span> 运维</span><br><span class="line">  tags:</span><br><span class="line"><span class="section">- linux命令</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果存在多个置顶文章，top后的参数越大，越靠前。</p>
+</blockquote>
 ]]></content>
       <categories>
         <category>笔记</category>
+        <category>前端</category>
       </categories>
       <tags>
-        <tag>Java</tag>
+        <tag>笔记</tag>
         <tag>前端</tag>
+        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
-    <title>随便写写</title>
-    <url>/2023/07/13/%E9%9A%8F%E4%BE%BF%E5%86%99%E5%86%99/</url>
-    <content><![CDATA[<h2 id="随便写写吧"><a href="#随便写写吧" class="headerlink" title="随便写写吧"></a>随便写写吧</h2><p>网站搭建</p>
-<p>themes&#x2F;next&#x2F;layout&#x2F;_scripts&#x2F;vendors.njk 文件，原有的代码</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;%- if theme.canvas_ribbon.enable %&#125;</span><br><span class="line">  &lt;script size=&quot;&#123;&#123; theme.canvas_ribbon.size &#125;&#125;&quot; alpha=&quot;&#123;&#123; theme.canvas_ribbon.alpha &#125;&#125;&quot; zIndex=&quot;&#123;&#123; theme.canvas_ribbon.zIndex &#125;&#125;&quot; src=&quot;&#123;&#123; theme.vendors.canvas_ribbon.url &#125;&#125;&quot;&gt;&lt;/script&gt;</span><br><span class="line">&#123;%- endif %&#125;</span><br><span class="line"></span><br><span class="line">&#123;%- for name in js_vendors() %&#125;</span><br><span class="line">  &#123;&#123; next_vendors(name) &#125;&#125;</span><br><span class="line">&#123;%- endfor %&#125;</span><br></pre></td></tr></table></figure>
+    <title>easyui tree combotree去掉默认图标或更换图标</title>
+    <url>/2023/09/04/easyui%20tree%20combotree%E5%8E%BB%E6%8E%89%E9%BB%98%E8%AE%A4%E5%9B%BE%E6%A0%87/</url>
+    <content><![CDATA[<p>@[TOC](easyui tree combotree 去掉默认图标)</p>
+<h1 id="easyui-tree-combotree去掉默认图标或更换图标"><a href="#easyui-tree-combotree去掉默认图标或更换图标" class="headerlink" title="easyui tree combotree去掉默认图标或更换图标"></a>easyui tree combotree去掉默认图标或更换图标</h1><blockquote>
+<p>当我使用easyui插件编写项目的时候，我想把前面的图标去除或更改图标</p>
+</blockquote>
+<span id="more"></span>
+<h2 id="图标操作"><a href="#图标操作" class="headerlink" title="图标操作"></a>图标操作</h2><h3 id="1、加载Tree"><a href="#1、加载Tree" class="headerlink" title="1、加载Tree"></a>1、加载Tree</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">&quot;#cc&quot;</span>).<span class="title function_">combotree</span>(&#123;</span><br><span class="line">     <span class="attr">url</span>: <span class="string">&#x27;/Pillars/GetChildAll&#x27;</span>,				<span class="comment">//请求地址</span></span><br><span class="line">     <span class="attr">method</span>: <span class="string">&#x27;post&#x27;</span>,							<span class="comment">//请求方式</span></span><br><span class="line">     <span class="attr">queryParams</span>: &#123; <span class="title class_">UnitType</span>:<span class="string">&#x27;-1,3,4,5,6&#x27;</span>&#125;,		<span class="comment">//参数</span></span><br><span class="line">     <span class="attr">valueField</span>: <span class="string">&#x27;id&#x27;</span>,							<span class="comment">//tree绑定的value值</span></span><br><span class="line">     <span class="attr">textField</span>: <span class="string">&#x27;text&#x27;</span>,							<span class="comment">//tree显示的text文本</span></span><br><span class="line">     <span class="attr">required</span>: <span class="literal">true</span>,							<span class="comment">//是否必填(true/false)</span></span><br><span class="line">     <span class="attr">editable</span>: <span class="literal">false</span>,							<span class="comment">// 不能直接输入到列表框</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="2、Tree加载完成后运行"><a href="#2、Tree加载完成后运行" class="headerlink" title="2、Tree加载完成后运行"></a>2、Tree加载完成后运行</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">onLoadSuccess</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    $(<span class="string">&#x27;#cc&#x27;</span>).<span class="title function_">combotree</span>(<span class="string">&#x27;tree&#x27;</span>).<span class="title function_">tree</span>(<span class="string">&quot;collapseAll&quot;</span>);	 <span class="comment">//全部关闭</span></span><br><span class="line">    $(<span class="string">&quot;.tree-icon,.tree-file&quot;</span>).<span class="title function_">removeClass</span>(<span class="string">&quot;tree-icon tree-file&quot;</span>);<span class="comment">//去掉最后一级图标</span></span><br><span class="line">    $(<span class="string">&quot;.tree-icon,.tree-folder&quot;</span>).<span class="title function_">removeClass</span>(<span class="string">&quot;tree-icon tree-folder tree-folder-open tree-folder-closed&quot;</span>);<span class="comment">//去掉所有父级图标</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="3、Node展开后运行"><a href="#3、Node展开后运行" class="headerlink" title="3、Node展开后运行"></a>3、Node展开后运行</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">onExpand</span>: <span class="keyword">function</span>(<span class="params">node</span>)&#123;</span><br><span class="line">	$(<span class="string">&#x27;.tree-title&#x27;</span>).<span class="title function_">prev</span>().<span class="title function_">removeClass</span>(<span class="string">&quot;tree-folder-open&quot;</span>);</span><br><span class="line"> 	$(<span class="string">&#x27;.tree-checkbox,.tree-checkbox0&#x27;</span>).<span class="title function_">prev</span>().<span class="title function_">removeClass</span>(<span class="string">&quot;tree-folder-open&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h2 id="修改图标"><a href="#修改图标" class="headerlink" title="修改图标"></a>修改图标</h2><h3 id="使用css"><a href="#使用css" class="headerlink" title="使用css"></a>使用css</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">   <span class="comment">/*默认*/</span></span><br><span class="line">   .<span class="property">tree</span>-icon &#123;</span><br><span class="line">       <span class="attr">background</span>: <span class="title function_">url</span>(<span class="string">&#x27;../../../images/topology/端口-1.svg&#x27;</span>) no-repeat center center !important;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/*折叠时图片*/</span></span><br><span class="line">   .<span class="property">tree</span>-folder &#123;</span><br><span class="line">       <span class="attr">background</span>: <span class="title function_">url</span>(<span class="string">&#x27;../../../images/topology/物理地址.svg&#x27;</span>) no-repeat center center !important;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/*展开时图片*/</span></span><br><span class="line">   .<span class="property">tree</span>-folder-open &#123;</span><br><span class="line">       <span class="attr">background</span>: <span class="title function_">url</span>(<span class="string">&#x27;../../../images/topology/物理地址.svg&#x27;</span>) no-repeat center center !important;</span><br><span class="line">   &#125;</span><br><span class="line">   &lt;/style&gt;</span><br></pre></td></tr></table></figure>
 
-
+<blockquote>
+<p>当然还有很多种方法,针对特定的场景进行编码，有用到再填充这个文档</p>
+</blockquote>
 ]]></content>
       <categories>
-        <category>随笔</category>
+        <category>笔记</category>
+        <category>前端</category>
       </categories>
       <tags>
-        <tag>随笔</tag>
-        <tag>感悟</tag>
+        <tag>笔记</tag>
+        <tag>前端</tag>
       </tags>
   </entry>
 </search>
