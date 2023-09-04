@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: hrf·blog
+title: Rui·blog
 subtitle: '奔赴山海，保持热爱'
 description: '心有所向，无问东西'
 keywords:
-author: hrf
+author: Rui
 language: zh-CN
 timezone: ''
 
@@ -125,7 +125,7 @@ search:
 #   total_symbols: true
 #   total_time: true
 #   exclude_codeblock: false
-#   awl: 2    
+#   awl: 2
 #   wpm: 275
 #   suffix: "mins."
 symbols_count_time:
@@ -133,13 +133,13 @@ symbols_count_time:
   symbols: true
   time: true
   # 文章底部显示
-  total_symbols: false  
+  total_symbols: false
   total_time: false
   # 是否统计代码块
   exclude_codeblock: false
   awl: 2
   wpm: 275
-  suffix: "mins." 
+  suffix: "mins."
 
 # feed
 # Dependencies: https://github.com/hexojs/hexo-generator-feed
@@ -161,7 +161,7 @@ vendors:
   darkmode_js:
 
 # darkmode.js
-darkmode_js: 
+darkmode_js:
   enable: true
 
 excerpt:			# 一定要顶格写，注意格式
@@ -188,5 +188,8 @@ recent_posts:
 # 图标
   icon: fa fa-history
 # 最多多少文章链接
-  max_count: 5
+  max_count:
 
+#hexo-admin metadata
+metadata:
+  toc: true

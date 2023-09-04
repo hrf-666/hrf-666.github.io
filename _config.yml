@@ -7,7 +7,7 @@ title: Rui·blog
 subtitle: '奔赴山海，保持热爱'
 description: '心有所向，无问东西'
 keywords:
-author: hrf
+author: Rui
 language: zh-CN
 timezone: ''
 
@@ -200,3 +200,6 @@ hexo_submit_urls_to_search_engine:
 #  find_what: http://hrf-666.github.io/blog
 #  replace_with: https://hrf-666.com
 
+#hexo-admin metadata
+metadata:
+  toc: true
