@@ -6,4 +6,19 @@ node_modules/
 _multiconfig.yml
 .idea/
 *.iml
+2023/
+about/
+aboutme/
+archives/
+categories/
+css/
+friends/
+guestbook/
+images/
+js/
+lib/
+photos
+scaffolds/
+schedule/
+tags/
 
