@@ -23,4 +23,7 @@ schedule/
 tags/
 db.json
 public/
+atom.xml
+index.html
+search.xml
 
