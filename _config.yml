@@ -207,7 +207,7 @@ hexo_submit_urls_to_search_engine:
 # 安全
 encrypt: # hexo-blog-encrypt hexo-blog-encrypt-new
   abstract: 加密文件，请输入密码查看!
-  message: 请需要密码!
+  message: 请输入密码!
   tags:
     - {name: 图片, password: 123456}
     - {name: 加密, password: 1234}
