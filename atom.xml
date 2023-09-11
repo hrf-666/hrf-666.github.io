@@ -6,7 +6,7 @@
   <link href="https://hrf-666.github.io/atom.xml" rel="self"/>
   
   <link href="https://hrf-666.github.io/"/>
-  <updated>2023-09-05T02:59:25.000Z</updated>
+  <updated>2023-09-11T07:07:12.849Z</updated>
   <id>https://hrf-666.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>判断数组对象中某一属性是否包含重复的值</title>
+    <link href="https://hrf-666.github.io/2023/09/11/2023-9-11%20js%E5%88%A4%E6%96%AD%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E4%B8%AD%E6%9F%90%E4%B8%80%E5%B1%9E%E6%80%A7%E6%98%AF%E5%90%A6%E5%8C%85%E5%90%AB%E9%87%8D%E5%A4%8D%E7%9A%84%E5%80%BC%20/"/>
+    <id>https://hrf-666.github.io/2023/09/11/2023-9-11%20js%E5%88%A4%E6%96%AD%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E4%B8%AD%E6%9F%90%E4%B8%80%E5%B1%9E%E6%80%A7%E6%98%AF%E5%90%A6%E5%8C%85%E5%90%AB%E9%87%8D%E5%A4%8D%E7%9A%84%E5%80%BC%20/</id>
+    <published>2023-09-11T02:58:25.000Z</published>
+    <updated>2023-09-11T07:07:12.849Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;@&lt;a href=&quot;js%E5%88%A4%E6%96%AD%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E4%B8%AD%E6%9F%90%E4%B8%80%E5%B1%9E%E6%80%A7%E6%98%AF%E5%90%A6%E5%8C%85%E5%90%AB%E9%87%8D%E5%A4%8D%E7%9A%84%E5%80%BC&quot;&gt;TOC&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;js判断数组对象中某一属性是否包含重复的值&quot;&gt;&lt;a href=&quot;#js判断数组对象中某一属性是否包含重复的值&quot; class=&quot;headerlink&quot; title=&quot;js判断数组对象中某一属性是否包含重复的值&quot;&gt;&lt;/a&gt;js判断数组对象中某一属性是否包含重复的值&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;当我想判断js数组对象中某一属性是否包含重复的值，有几种方法。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="笔记" scheme="https://hrf-666.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="前端" scheme="https://hrf-666.github.io/categories/%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="笔记" scheme="https://hrf-666.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="前端" scheme="https://hrf-666.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo如何置顶文章</title>
@@ -130,9 +156,9 @@
     <category term="笔记" scheme="https://hrf-666.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="Java" scheme="https://hrf-666.github.io/tags/Java/"/>
-    
     <category term="前端" scheme="https://hrf-666.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="Java" scheme="https://hrf-666.github.io/tags/Java/"/>
     
   </entry>
   
