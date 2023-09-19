@@ -6,7 +6,7 @@
   <link href="https://hrf-666.github.io/atom.xml" rel="self"/>
   
   <link href="https://hrf-666.github.io/"/>
-  <updated>2023-09-19T02:47:21.019Z</updated>
+  <updated>2023-09-19T04:53:14.371Z</updated>
   <id>https://hrf-666.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Git Ignore基础</title>
+    <link href="https://hrf-666.github.io/2023/09/19/Git%20Ignore%E5%9F%BA%E7%A1%80/"/>
+    <id>https://hrf-666.github.io/2023/09/19/Git%20Ignore%E5%9F%BA%E7%A1%80/</id>
+    <published>2023-09-19T03:58:00.000Z</published>
+    <updated>2023-09-19T04:53:14.371Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Git-Ignore基础&quot;&gt;&lt;a href=&quot;#Git-Ignore基础&quot; class=&quot;headerlink&quot; title=&quot;Git Ignore基础&quot;&gt;&lt;/a&gt;Git Ignore基础&lt;/h1&gt;&lt;p&gt;Git中忽略已修改（但未提交）的文件&lt;br&gt;在本文中，我们将介绍如何在Git中忽略已修改的文件，但是没有提交的文件。有时候，在开发过程中我们可能会修改一些文件，但是由于各种原因，我们可能并不希望将这些修改提交到Git版本控制系统中。这可能是因为这些修改不是最终版本，或者是因为这些修改仅适用于开发环境而不适用于生产环境。&lt;/p&gt;
+&lt;p&gt;Git Ignore基础&lt;br&gt;首先，让我们简要了解Git Ignore的基本概念。在Git中，.gitignore文件用于指定哪些文件和文件夹应该被Git忽略。这些被忽略的文件不会被包含在Git仓库中，Git不会跟踪和管理这些被忽略的文件。.gitignore文件可以被放置在Git仓库的根目录下，也可以放置在子目录中。&lt;/p&gt;
+&lt;p&gt;Git Ignore规则可以使用通配符来匹配文件名、文件夹名或路径。常用的通配符包括*（用于匹配任意字符），?（用于匹配单个字符），**（用于匹配任意数量的目录或文件），[]（用于匹配一组字符），!（表示否定匹配）等。&lt;/p&gt;
+&lt;p&gt;以下是一个示例的.gitignore文件内容：&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Git" scheme="https://hrf-666.github.io/categories/Git/"/>
+    
+    
+    <category term="git" scheme="https://hrf-666.github.io/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>mybatis 查询条件List集合、map集合、Array数组</title>
