@@ -21,28 +21,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"hrf-666.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="心有所向，无问东西">
-<meta property="og:type" content="website">
-<meta property="og:title" content="schedule">
-<meta property="og:url" content="https://hrf-666.github.io/schedule/index.html">
+    <meta name="description" content="返回map类型123451. xml中    &lt;select id&#x3D;&quot;selectUser &quot;  resultType&#x3D;&quot;java.util.HashMap&quot;&gt;      &lt;&#x2F;select&gt;2.Dao接口中    Map&lt;String,Object&gt; selectUser();  返回List类型123451. xml中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mybatis 查询返回List集合、map集合、List＜Map＞集合">
+<meta property="og:url" content="https://hrf-666.github.io/2023/09/19/mybatis%20%E6%9F%A5%E8%AF%A2%E8%BF%94%E5%9B%9EList%E9%9B%86%E5%90%88%E3%80%81map%E9%9B%86%E5%90%88%E3%80%81List%EF%BC%9CMap%EF%BC%9E%E9%9B%86%E5%90%88/index.html">
 <meta property="og:site_name" content="Rui·Blog">
-<meta property="og:description" content="心有所向，无问东西">
+<meta property="og:description" content="返回map类型123451. xml中    &lt;select id&#x3D;&quot;selectUser &quot;  resultType&#x3D;&quot;java.util.HashMap&quot;&gt;      &lt;&#x2F;select&gt;2.Dao接口中    Map&lt;String,Object&gt; selectUser();  返回List类型123451. xml中">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-08-08T06:33:17.000Z">
-<meta property="article:modified_time" content="2023-08-25T08:18:52.048Z">
+<meta property="article:published_time" content="2023-09-19T02:58:00.000Z">
+<meta property="article:modified_time" content="2023-09-19T01:30:50.214Z">
 <meta property="article:author" content="Rui">
+<meta property="article:tag" content="后端">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://hrf-666.github.io/schedule/">
+<link rel="canonical" href="https://hrf-666.github.io/2023/09/19/mybatis%20%E6%9F%A5%E8%AF%A2%E8%BF%94%E5%9B%9EList%E9%9B%86%E5%90%88%E3%80%81map%E9%9B%86%E5%90%88%E3%80%81List%EF%BC%9CMap%EF%BC%9E%E9%9B%86%E5%90%88/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":true,"permalink":"https://hrf-666.github.io/schedule/index.html","path":"schedule/index.html","title":"schedule"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hrf-666.github.io/2023/09/19/mybatis%20%E6%9F%A5%E8%AF%A2%E8%BF%94%E5%9B%9EList%E9%9B%86%E5%90%88%E3%80%81map%E9%9B%86%E5%90%88%E3%80%81List%EF%BC%9CMap%EF%BC%9E%E9%9B%86%E5%90%88/","path":"2023/09/19/mybatis 查询返回List集合、map集合、List＜Map＞集合/","title":"mybatis 查询返回List集合、map集合、List＜Map＞集合"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>schedule | Rui·Blog
-</title>
+<title>mybatis 查询返回List集合、map集合、List＜Map＞集合 | Rui·Blog</title>
   
 
 
@@ -130,7 +130,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -143,6 +143,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%94%E5%9B%9Emap%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">返回map类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%94%E5%9B%9EList%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">返回List类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%94%E5%9B%9EList%E7%B1%BB%E5%9E%8B-1"><span class="nav-number">3.</span> <span class="nav-text">返回List&lt;Map&lt;String,Obiect&gt;&gt;类型</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -218,34 +219,165 @@
 
     </div>
 
-    <div class="main-inner page posts-expand">
+    <div class="main-inner post posts-expand">
 
 
-    
-    
-    
-    <div class="post-block" lang="zh-CN"><header class="post-header">
+  
 
-<h1 class="post-title" itemprop="name headline">schedule
-</h1>
 
-<div class="post-meta-container">
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hrf-666.github.io/2023/09/19/mybatis%20%E6%9F%A5%E8%AF%A2%E8%BF%94%E5%9B%9EList%E9%9B%86%E5%90%88%E3%80%81map%E9%9B%86%E5%90%88%E3%80%81List%EF%BC%9CMap%EF%BC%9E%E9%9B%86%E5%90%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Rui">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rui·Blog">
+      <meta itemprop="description" content="心有所向，无问东西">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="mybatis 查询返回List集合、map集合、List＜Map＞集合 | Rui·Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          mybatis 查询返回List集合、map集合、List＜Map＞集合
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-09-19 10:58:00 / 修改时间：09:30:50" itemprop="dateCreated datePublished" datetime="2023-09-19T10:58:00+08:00">2023-09-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/mybatis/" itemprop="url" rel="index"><span itemprop="name">mybatis</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>510</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
 </div>
 
-</header>
+        </div>
+      </header>
 
-      
-      
-      <div class="post-body">
-          
-      </div>
-      
-      
-      
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="返回map类型"><a href="#返回map类型" class="headerlink" title="返回map类型"></a>返回map类型</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> xml中</span><br><span class="line">    &lt;select id=<span class="string">&quot;selectUser &quot;</span>  resultType=<span class="string">&quot;java.util.HashMap&quot;</span>&gt;  </span><br><span class="line">    &lt;/select&gt;</span><br><span class="line"><span class="number">2.</span>Dao接口中</span><br><span class="line">    Map&lt;String,Object&gt; <span class="title function_">selectUser</span><span class="params">()</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="返回List类型"><a href="#返回List类型" class="headerlink" title="返回List类型"></a>返回List类型</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> xml中</span><br><span class="line">   &lt;select id=<span class="string">&quot;selectUser &quot;</span>  resultType=<span class="string">&quot;java.lang.String&quot;</span>&gt;  </span><br><span class="line">   &lt;/select&gt;</span><br><span class="line"><span class="number">2.</span>Dao接口中</span><br><span class="line">    List&lt;String&gt; <span class="title function_">selectUser</span><span class="params">()</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="返回List类型-1"><a href="#返回List类型-1" class="headerlink" title="返回List&lt;Map&lt;String,Obiect&gt;&gt;类型"></a>返回List&lt;Map&lt;String,Obiect&gt;&gt;类型</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> xml中</span><br><span class="line">    &lt;select id=<span class="string">&quot;selectUser&quot;</span>  resultType=<span class="string">&quot;java.util.HashMap&quot;</span>&gt;  </span><br><span class="line">    &lt;/select&gt;</span><br><span class="line"><span class="number">2.</span>Dao接口中</span><br><span class="line">    List&lt;Map&lt;String,Object&gt;&gt; <span class="title function_">selectUser</span> <span class="params">()</span>;</span><br></pre></td></tr></table></figure>
+
+
+
     </div>
 
     
     
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="Rui 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="Rui 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Rui
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://hrf-666.github.io/2023/09/19/mybatis%20%E6%9F%A5%E8%AF%A2%E8%BF%94%E5%9B%9EList%E9%9B%86%E5%90%88%E3%80%81map%E9%9B%86%E5%90%88%E3%80%81List%EF%BC%9CMap%EF%BC%9E%E9%9B%86%E5%90%88/" title="mybatis 查询返回List集合、map集合、List＜Map＞集合">https://hrf-666.github.io/2023/09/19/mybatis 查询返回List集合、map集合、List＜Map＞集合/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag"># 后端</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/09/11/js%E5%88%A4%E6%96%AD%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E4%B8%AD%E6%9F%90%E4%B8%80%E5%B1%9E%E6%80%A7%E6%98%AF%E5%90%A6%E5%8C%85%E5%90%AB%E9%87%8D%E5%A4%8D%E7%9A%84%E5%80%BC%20/" rel="prev" title="判断数组对象中某一属性是否包含重复的值">
+                  <i class="fa fa-angle-left"></i> 判断数组对象中某一属性是否包含重复的值
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/09/19/mybatis%20%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6List%E9%9B%86%E5%90%88%E3%80%81map%E9%9B%86%E5%90%88%E3%80%81Array%E6%95%B0%E7%BB%84/" rel="next" title="mybatis 查询条件List集合、map集合、Array数组">
+                  mybatis 查询条件List集合、map集合、Array数组 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
 
 
 </div>

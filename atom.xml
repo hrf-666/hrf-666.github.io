@@ -6,7 +6,7 @@
   <link href="https://hrf-666.github.io/atom.xml" rel="self"/>
   
   <link href="https://hrf-666.github.io/"/>
-  <updated>2023-09-11T07:07:12.849Z</updated>
+  <updated>2023-09-19T02:47:21.019Z</updated>
   <id>https://hrf-666.github.io/</id>
   
   <author>
@@ -15,6 +15,51 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mybatis 查询条件List集合、map集合、Array数组</title>
+    <link href="https://hrf-666.github.io/2023/09/19/mybatis%20%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6List%E9%9B%86%E5%90%88%E3%80%81map%E9%9B%86%E5%90%88%E3%80%81Array%E6%95%B0%E7%BB%84/"/>
+    <id>https://hrf-666.github.io/2023/09/19/mybatis%20%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6List%E9%9B%86%E5%90%88%E3%80%81map%E9%9B%86%E5%90%88%E3%80%81Array%E6%95%B0%E7%BB%84/</id>
+    <published>2023-09-19T02:58:00.000Z</published>
+    <updated>2023-09-19T02:47:21.019Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;参数为集合&quot;&gt;&lt;a href=&quot;#参数为集合&quot; class=&quot;headerlink&quot; title=&quot;参数为集合&quot;&gt;&lt;/a&gt;参数为集合&lt;/h1&gt;&lt;h2 id=&quot;传入map类型&quot;&gt;&lt;a href=&quot;#传入map类型&quot; class=&quot;headerlink&quot; title=&quot;传入map类型&quot;&gt;&lt;/a&gt;传入map类型&lt;/h2&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Mapper接口如下，service将调用该接口方法，需要注意的是，&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Map集合在foreach由于没有默认键可用，故需要使用 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@Param&lt;/span&gt; 注解手动指定一个标识，后面将在foreach中将其作为键使用。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        该标识任意指定即可，这里使用&lt;span class=&quot;string&quot;&gt;&amp;quot;stuMap&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@Mapperpublic&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;title class_&quot;&gt;StudentMapper&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; List&amp;lt;Student&amp;gt; &lt;span class=&quot;title function_&quot;&gt;findAddByName2&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;meta&quot;&gt;@Param(&amp;quot;stuMap&amp;quot;)&lt;/span&gt; Map&amp;lt;String, String&amp;gt; stuMap)&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;传入参数为集合时，映射文件的sql标签parameterType属性可省略。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        由于是Map集合，collection无默认键，&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        故配置其为对应的接口方法中的形参前的@Param注解中的标识(此处即为&amp;quot;stuMap&amp;quot;)。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        由于是Map集合，index、item属性分别表示为该Map集合中的key、value，&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        故可以分别用$&amp;#123;k&amp;#125;，#&amp;#123;v&amp;#125;来获取该Map集合中的key、value&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&amp;quot;findAddByName2&amp;quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;resultMap&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&amp;quot;studentResultMap&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        SELECT * FROM user&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;where&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;collection&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&amp;quot;stuMap&amp;quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;index&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&amp;quot;k&amp;quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;item&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&amp;quot;v&amp;quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                AND  $&amp;#123;k&amp;#125; = #&amp;#123;v&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;foreach&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;where&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;select&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;传入List类型&quot;&gt;&lt;a href=&quot;#传入List类型&quot; class=&quot;headerlink&quot; title=&quot;传入List类型&quot;&gt;&lt;/a&gt;传入List&lt;object&gt;类型&lt;/object&gt;&lt;/h2&gt;</summary>
+    
+    
+    
+    <category term="mybatis" scheme="https://hrf-666.github.io/categories/mybatis/"/>
+    
+    
+    <category term="后端" scheme="https://hrf-666.github.io/tags/%E5%90%8E%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mybatis 查询返回List集合、map集合、List＜Map＞集合</title>
+    <link href="https://hrf-666.github.io/2023/09/19/mybatis%20%E6%9F%A5%E8%AF%A2%E8%BF%94%E5%9B%9EList%E9%9B%86%E5%90%88%E3%80%81map%E9%9B%86%E5%90%88%E3%80%81List%EF%BC%9CMap%EF%BC%9E%E9%9B%86%E5%90%88/"/>
+    <id>https://hrf-666.github.io/2023/09/19/mybatis%20%E6%9F%A5%E8%AF%A2%E8%BF%94%E5%9B%9EList%E9%9B%86%E5%90%88%E3%80%81map%E9%9B%86%E5%90%88%E3%80%81List%EF%BC%9CMap%EF%BC%9E%E9%9B%86%E5%90%88/</id>
+    <published>2023-09-19T02:58:00.000Z</published>
+    <updated>2023-09-19T01:30:50.214Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;返回map类型&quot;&gt;&lt;a href=&quot;#返回map类型&quot; class=&quot;headerlink&quot; title=&quot;返回map类型&quot;&gt;&lt;/a&gt;返回map类型&lt;/h2&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;1.&lt;/span&gt; xml中&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;select id=&lt;span class=&quot;string&quot;&gt;&amp;quot;selectUser &amp;quot;&lt;/span&gt;  resultType=&lt;span class=&quot;string&quot;&gt;&amp;quot;java.util.HashMap&amp;quot;&lt;/span&gt;&amp;gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/select&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2.&lt;/span&gt;Dao接口中&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Map&amp;lt;String,Object&amp;gt; &lt;span class=&quot;title function_&quot;&gt;selectUser&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;返回List类型&quot;&gt;&lt;a href=&quot;#返回List类型&quot; class=&quot;headerlink&quot; title=&quot;返回List类型&quot;&gt;&lt;/a&gt;返回List类型&lt;/h2&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;1.&lt;/span&gt; xml中&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &amp;lt;select id=&lt;span class=&quot;string&quot;&gt;&amp;quot;selectUser &amp;quot;&lt;/span&gt;  resultType=&lt;span class=&quot;string&quot;&gt;&amp;quot;java.lang.String&amp;quot;&lt;/span&gt;&amp;gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &amp;lt;/select&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2.&lt;/span&gt;Dao接口中&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    List&amp;lt;String&amp;gt; &lt;span class=&quot;title function_&quot;&gt;selectUser&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;返回List类型-1&quot;&gt;&lt;a href=&quot;#返回List类型-1&quot; class=&quot;headerlink&quot; title=&quot;返回List&amp;lt;Map&amp;lt;String,Obiect&amp;gt;&amp;gt;类型&quot;&gt;&lt;/a&gt;返回List&amp;lt;Map&amp;lt;String,Obiect&amp;gt;&amp;gt;类型&lt;/h2&gt;</summary>
+    
+    
+    
+    <category term="mybatis" scheme="https://hrf-666.github.io/categories/mybatis/"/>
+    
+    
+    <category term="后端" scheme="https://hrf-666.github.io/tags/%E5%90%8E%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>判断数组对象中某一属性是否包含重复的值</title>
@@ -94,6 +139,25 @@
   </entry>
   
   <entry>
+    <title>图片展示</title>
+    <link href="https://hrf-666.github.io/2023/08/24/%E5%9B%BE%E7%89%87%E5%B1%95%E7%A4%BA/"/>
+    <id>https://hrf-666.github.io/2023/08/24/%E5%9B%BE%E7%89%87%E5%B1%95%E7%A4%BA/</id>
+    <published>2023-08-24T02:58:25.000Z</published>
+    <updated>2023-09-11T10:47:16.284Z</updated>
+    
+    
+    <summary type="html">加密文件，请输入密码查看!</summary>
+    
+    
+    
+    <category term="图片" scheme="https://hrf-666.github.io/categories/%E5%9B%BE%E7%89%87/"/>
+    
+    
+    <category term="图片" scheme="https://hrf-666.github.io/tags/%E5%9B%BE%E7%89%87/"/>
+    
+  </entry>
+  
+  <entry>
     <title>picGo+gitee设置图床</title>
     <link href="https://hrf-666.github.io/2023/08/24/picGo+gitee%E8%AE%BE%E7%BD%AE%E5%9B%BE%E5%BA%8A/"/>
     <id>https://hrf-666.github.io/2023/08/24/picGo+gitee%E8%AE%BE%E7%BD%AE%E5%9B%BE%E5%BA%8A/</id>
@@ -119,25 +183,6 @@
   </entry>
   
   <entry>
-    <title>图片展示</title>
-    <link href="https://hrf-666.github.io/2023/08/24/%E5%9B%BE%E7%89%87%E5%B1%95%E7%A4%BA/"/>
-    <id>https://hrf-666.github.io/2023/08/24/%E5%9B%BE%E7%89%87%E5%B1%95%E7%A4%BA/</id>
-    <published>2023-08-24T02:58:25.000Z</published>
-    <updated>2023-09-11T10:47:16.284Z</updated>
-    
-    
-    <summary type="html">加密文件，请输入密码查看!</summary>
-    
-    
-    
-    <category term="图片" scheme="https://hrf-666.github.io/categories/%E5%9B%BE%E7%89%87/"/>
-    
-    
-    <category term="图片" scheme="https://hrf-666.github.io/tags/%E5%9B%BE%E7%89%87/"/>
-    
-  </entry>
-  
-  <entry>
     <title>树结构展示</title>
     <link href="https://hrf-666.github.io/2023/08/08/%E6%A0%91%E7%BB%93%E6%9E%84%E5%B1%95%E7%A4%BA/"/>
     <id>https://hrf-666.github.io/2023/08/08/%E6%A0%91%E7%BB%93%E6%9E%84%E5%B1%95%E7%A4%BA/</id>
@@ -159,28 +204,6 @@
     <category term="前端" scheme="https://hrf-666.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
     <category term="Java" scheme="https://hrf-666.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://hrf-666.github.io/2023/08/08/hello-world/"/>
-    <id>https://hrf-666.github.io/2023/08/08/hello-world/</id>
-    <published>2023-08-08T02:58:00.000Z</published>
-    <updated>2023-08-25T08:18:51.980Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&amp;quot;My New Post&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/writing.html&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="笔记" scheme="https://hrf-666.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="hexo" scheme="https://hrf-666.github.io/tags/hexo/"/>
     
   </entry>
   

@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/themes/black/pace-theme-loading-bar.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hrf-666.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="参数为集合传入map类型12345678Mapper接口如下，service将调用该接口方法，需要注意的是，        Map集合在foreach由于没有默认键可用，故需要使用 @Param 注解手动指定一个标识，后面将在foreach中将其作为键使用。        该标识任意指定即可，这里使用&quot;stuMap&quot;@Mapperpublic interface Student">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mybatis 查询条件List集合、map集合、Array数组">
+<meta property="og:url" content="https://hrf-666.github.io/2023/09/19/mybatis%20%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6List%E9%9B%86%E5%90%88%E3%80%81map%E9%9B%86%E5%90%88%E3%80%81Array%E6%95%B0%E7%BB%84/index.html">
+<meta property="og:site_name" content="Rui·Blog">
+<meta property="og:description" content="参数为集合传入map类型12345678Mapper接口如下，service将调用该接口方法，需要注意的是，        Map集合在foreach由于没有默认键可用，故需要使用 @Param 注解手动指定一个标识，后面将在foreach中将其作为键使用。        该标识任意指定即可，这里使用&quot;stuMap&quot;@Mapperpublic interface Student">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-09-19T02:58:00.000Z">
+<meta property="article:modified_time" content="2023-09-19T02:47:21.019Z">
+<meta property="article:author" content="Rui">
+<meta property="article:tag" content="后端">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://hrf-666.github.io/2023/09/19/mybatis%20%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6List%E9%9B%86%E5%90%88%E3%80%81map%E9%9B%86%E5%90%88%E3%80%81Array%E6%95%B0%E7%BB%84/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hrf-666.github.io/2023/09/19/mybatis%20%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6List%E9%9B%86%E5%90%88%E3%80%81map%E9%9B%86%E5%90%88%E3%80%81Array%E6%95%B0%E7%BB%84/","path":"2023/09/19/mybatis 查询条件List集合、map集合、Array数组/","title":"mybatis 查询条件List集合、map集合、Array数组"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>mybatis 查询条件List集合、map集合、Array数组 | Rui·Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Rui·Blog" type="application/atom+xml">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Rui·Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">奔赴山海，保持热爱</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E4%B8%BA%E9%9B%86%E5%90%88"><span class="nav-number">1.</span> <span class="nav-text">参数为集合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%A0%E5%85%A5map%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.1.</span> <span class="nav-text">传入map类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%A0%E5%85%A5List%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text">传入List类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%A0%E5%85%A5Array%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.3.</span> <span class="nav-text">传入Array类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%A0%E5%85%A5%E5%8F%82%E6%95%B0%E4%B8%BA%E5%8C%85%E5%90%AB%E9%9B%86%E5%90%88%E5%B1%9E%E6%80%A7%E7%9A%84POJO"><span class="nav-number">1.4.</span> <span class="nav-text">传入参数为包含集合属性的POJO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POJO-%E5%B1%9E%E6%80%A7%E4%B8%BA-Array"><span class="nav-number">1.5.</span> <span class="nav-text">POJO 属性为 Array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POJO-%E5%B1%9E%E6%80%A7%E4%B8%BA-Map"><span class="nav-number">1.6.</span> <span class="nav-text">POJO 属性为 Map</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Rui"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Rui</p>
+  <div class="site-description" itemprop="description">心有所向，无问东西</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hrf-666" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hrf-666" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:3398775460@qq.com" title="E-Mail → mailto:3398775460@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+  <div class="links-of-recent-posts motion-element">
+    <div class="links-of-recent-posts-title">
+      <i class="fa fa-history fa-fw"></i>
+      最近文章
+    </div>
+    <ul class="links-of-recent-posts-list">
+        <li class="links-of-recent-posts-item">
+          <a href="/2023/09/19/mybatis%20%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6List%E9%9B%86%E5%90%88%E3%80%81map%E9%9B%86%E5%90%88%E3%80%81Array%E6%95%B0%E7%BB%84/" title="2023&#x2F;09&#x2F;19&#x2F;mybatis 查询条件List集合、map集合、Array数组&#x2F;">mybatis 查询条件List集合、map集合、Array数组</a>
+        </li>
+        <li class="links-of-recent-posts-item">
+          <a href="/2023/09/19/mybatis%20%E6%9F%A5%E8%AF%A2%E8%BF%94%E5%9B%9EList%E9%9B%86%E5%90%88%E3%80%81map%E9%9B%86%E5%90%88%E3%80%81List%EF%BC%9CMap%EF%BC%9E%E9%9B%86%E5%90%88/" title="2023&#x2F;09&#x2F;19&#x2F;mybatis 查询返回List集合、map集合、List＜Map＞集合&#x2F;">mybatis 查询返回List集合、map集合、List＜Map＞集合</a>
+        </li>
+        <li class="links-of-recent-posts-item">
+          <a href="/2023/09/11/js%E5%88%A4%E6%96%AD%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E4%B8%AD%E6%9F%90%E4%B8%80%E5%B1%9E%E6%80%A7%E6%98%AF%E5%90%A6%E5%8C%85%E5%90%AB%E9%87%8D%E5%A4%8D%E7%9A%84%E5%80%BC%20/" title="2023&#x2F;09&#x2F;11&#x2F;js判断数组对象中某一属性是否包含重复的值 &#x2F;">判断数组对象中某一属性是否包含重复的值</a>
+        </li>
+        <li class="links-of-recent-posts-item">
+          <a href="/2023/09/04/Hexo%E5%A6%82%E4%BD%95%E7%BD%AE%E9%A1%B6%E6%96%87%E7%AB%A0/" title="2023&#x2F;09&#x2F;04&#x2F;Hexo如何置顶文章&#x2F;">Hexo如何置顶文章</a>
+        </li>
+        <li class="links-of-recent-posts-item">
+          <a href="/2023/09/04/easyui%20tree%20combotree%E5%8E%BB%E6%8E%89%E9%BB%98%E8%AE%A4%E5%9B%BE%E6%A0%87/" title="2023&#x2F;09&#x2F;04&#x2F;easyui tree combotree去掉默认图标&#x2F;">easyui tree combotree去掉默认图标或更换图标</a>
+        </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hrf-666.github.io/2023/09/19/mybatis%20%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6List%E9%9B%86%E5%90%88%E3%80%81map%E9%9B%86%E5%90%88%E3%80%81Array%E6%95%B0%E7%BB%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Rui">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rui·Blog">
+      <meta itemprop="description" content="心有所向，无问东西">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="mybatis 查询条件List集合、map集合、Array数组 | Rui·Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          mybatis 查询条件List集合、map集合、Array数组
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-09-19 10:58:00 / 修改时间：10:47:21" itemprop="dateCreated datePublished" datetime="2023-09-19T10:58:00+08:00">2023-09-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/mybatis/" itemprop="url" rel="index"><span itemprop="name">mybatis</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>6.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>12 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="参数为集合"><a href="#参数为集合" class="headerlink" title="参数为集合"></a>参数为集合</h1><h2 id="传入map类型"><a href="#传入map类型" class="headerlink" title="传入map类型"></a>传入map类型</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Mapper接口如下，service将调用该接口方法，需要注意的是，</span><br><span class="line">        Map集合在foreach由于没有默认键可用，故需要使用 </span><br><span class="line"><span class="meta">@Param</span> 注解手动指定一个标识，后面将在foreach中将其作为键使用。</span><br><span class="line">        该标识任意指定即可，这里使用<span class="string">&quot;stuMap&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Mapperpublic</span> <span class="keyword">interface</span> <span class="title class_">StudentMapper</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Student&gt; <span class="title function_">findAddByName2</span><span class="params">(<span class="meta">@Param(&quot;stuMap&quot;)</span> Map&lt;String, String&gt; stuMap)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">传入参数为集合时，映射文件的sql标签parameterType属性可省略。</span><br><span class="line">        由于是Map集合，collection无默认键，</span><br><span class="line">        故配置其为对应的接口方法中的形参前的@Param注解中的标识(此处即为&quot;stuMap&quot;)。</span><br><span class="line">        由于是Map集合，index、item属性分别表示为该Map集合中的key、value，</span><br><span class="line">        故可以分别用$&#123;k&#125;，#&#123;v&#125;来获取该Map集合中的key、value</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;findAddByName2&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;studentResultMap&quot;</span>&gt;</span></span><br><span class="line">        SELECT * FROM user</span><br><span class="line">        <span class="tag">&lt;<span class="name">where</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">&quot;stuMap&quot;</span> <span class="attr">index</span>=<span class="string">&quot;k&quot;</span> <span class="attr">item</span>=<span class="string">&quot;v&quot;</span>&gt;</span></span><br><span class="line">                AND  $&#123;k&#125; = #&#123;v&#125;</span><br><span class="line">            <span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">where</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="传入List类型"><a href="#传入List类型" class="headerlink" title="传入List类型"></a>传入List<Object>类型</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Mapper接口如下，service将调用该接口方法</span><br><span class="line"></span><br><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">StudentMapper</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Student&gt; <span class="title function_">findAddByName3</span><span class="params">(List&lt;Student&gt; stuList)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">传入参数为集合时，映射文件的sql标签parameterType属性可省略。这里由于是List集合，</span><br><span class="line">        故collection使用默认键list，而item属性可以任意指定，</span><br><span class="line">        用来标识每次遍历的元素对象名称，这里记为node,则表示每次遍历的元素的属性时，</span><br><span class="line">        可以使用点操作符,如node.address，node.sex所示</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;findAddByName3&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;studentResultMap&quot;</span>&gt;</span></span><br><span class="line">        SELECT * FROM user</span><br><span class="line"><span class="tag">&lt;<span class="name">where</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">&quot;list&quot;</span> <span class="attr">item</span>=<span class="string">&quot;node&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;node.address != null&quot;</span>&gt;</span></span><br><span class="line">        OR address = #&#123;node.address&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;node.username != null&quot;</span>&gt;</span></span><br><span class="line">        OR username = #&#123;node.username&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;node.sex != null&quot;</span>&gt;</span></span><br><span class="line">        OR sex = #&#123;node.sex&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">where</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="传入Array类型"><a href="#传入Array类型" class="headerlink" title="传入Array类型"></a>传入Array类型</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Mapper接口如下，service将调用该接口方法</span><br><span class="line"></span><br><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">StudentMapper</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Student&gt; <span class="title function_">findAddByName4</span><span class="params">(Student[] stuArray)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">传入参数为集合时，映射文件的sql标签parameterType属性可省略。</span><br><span class="line">        这里由于是Array，故collection使用默认键array，</span><br><span class="line">        而item属性可以任意指定，用来标识每次遍历的元素对象名称，这里记为node,</span><br><span class="line">        则表示每次遍历的元素的属性时，可以使用点操作符,如node.address，node.sex所示。</span><br><span class="line">        需要注意的是，foreach将遍历数组的所有元素，</span><br><span class="line">        所以每次取该元素的属性前，需要先对该元素对象进行判空(如下所示)</span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;findAddByName4&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;studentResultMap&quot;</span>&gt;</span></span><br><span class="line">        SELECT * FROM user</span><br><span class="line">        <span class="tag">&lt;<span class="name">where</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">&quot;array&quot;</span> <span class="attr">item</span>=<span class="string">&quot;node&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;node != null&quot;</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;node.username != null&quot;</span>&gt;</span></span><br><span class="line">                        OR username = #&#123;node.username&#125;</span><br><span class="line">                    <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;node.address != null&quot;</span>&gt;</span></span><br><span class="line">                        OR address = #&#123;node.address&#125;</span><br><span class="line">                    <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;node.sex != null&quot;</span>&gt;</span></span><br><span class="line">                        OR sex = #&#123;node.sex&#125;</span><br><span class="line">                    <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">where</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="传入参数为包含集合属性的POJO"><a href="#传入参数为包含集合属性的POJO" class="headerlink" title="传入参数为包含集合属性的POJO"></a>传入参数为包含集合属性的POJO</h2><p>传入的参数为一个POJO，其属性中有集合类型时，collection直接配置为相应集合中的属性名即可</p>
+<p>构造下列一个UserVo对象同时设置一个List集合属性，传入service</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">UserVo</span> <span class="variable">userVo</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UserVo</span>();</span><br><span class="line">userVo.setSex(<span class="string">&quot;123&quot;</span>);</span><br><span class="line">List&lt;Student&gt; list = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">list.add( <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;Aaron&quot;</span>, <span class="string">&quot;3&quot;</span>, <span class="string">&quot;NanJing&quot;</span>) );</span><br><span class="line">list.add( <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;tony&quot;</span>, <span class="string">&quot;0&quot;</span>, <span class="string">&quot;Beijing&quot;</span>) );</span><br><span class="line">userVo.setStuList(list);</span><br><span class="line">studentService.findAddByName6(userVo);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Mapper接口如下，service将调用该接口方法</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">StudentMapper</span> &#123;</span><br><span class="line">        <span class="keyword">public</span> List&lt;Student&gt; <span class="title function_">findAddByName6</span><span class="params">(UserVo userVo)</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">传入参数为UserVo类型，故映射文件的sql标签parameterType属性配置为UserVo。</span><br><span class="line">        该POJO的stuList属性为List集合类型，在遍历该属性的List集合时，collection配置为该属性名stuList即可。</span><br><span class="line">        而item属性可以任意指定，用来标识每次遍历的元素对象名称，这里记为node,</span><br><span class="line">        则表示每次遍历的元素的属性时，可以使用点操作符,如node.address，node.sex所示</span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;findAddByName6&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;com.aaron.springbootdemo.pojo.UserVo&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;studentResultMap&quot;</span>&gt;</span></span><br><span class="line">        SELECT * FROM  user</span><br><span class="line">        <span class="tag">&lt;<span class="name">where</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;sex != null&quot;</span>&gt;</span></span><br><span class="line">                OR sex = #&#123;sex&#125;</span><br><span class="line">            <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">&quot;stuList&quot;</span> <span class="attr">item</span>=<span class="string">&quot;node&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;node.username != null&quot;</span>&gt;</span></span><br><span class="line">                    OR username = #&#123;node.username&#125;</span><br><span class="line">                <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;node.sex != null&quot;</span>&gt;</span></span><br><span class="line">                    OR sex = #&#123;node.sex&#125;</span><br><span class="line">                <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;node.address != null&quot;</span>&gt;</span></span><br><span class="line">                    OR address = #&#123;node.address&#125;</span><br><span class="line">                <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">where</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="POJO-属性为-Array"><a href="#POJO-属性为-Array" class="headerlink" title="POJO 属性为 Array"></a>POJO 属性为 Array</h2><p>构造下列一个UserVo对象同时设置一个Array属性，传入service</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">UserVo</span> <span class="variable">userVo</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UserVo</span>();</span><br><span class="line">userVo.setSex(<span class="string">&quot;456&quot;</span>);</span><br><span class="line">Student[] stuArray = <span class="keyword">new</span> <span class="title class_">Student</span>[<span class="number">4</span>];</span><br><span class="line">stuArray[<span class="number">0</span>] = <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;Aaron&quot;</span>, <span class="string">&quot;3&quot;</span>);</span><br><span class="line">stuArray[<span class="number">1</span>] = <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;Tom&quot;</span>, <span class="string">&quot;1&quot;</span>);</span><br><span class="line">userVo.setStuArray(stuArray);</span><br><span class="line">studentService.findAddByName5(userVo);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Mapper接口如下，service将调用该接口方法</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">StudentMapper</span> &#123;</span><br><span class="line">        <span class="keyword">public</span> List&lt;Student&gt; <span class="title function_">findAddByName5</span><span class="params">(UserVo userVo)</span>;    </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">传入参数为UserVo类型，故映射文件的sql标签parameterType属性配置为UserVo。</span><br><span class="line">        该POJO的stuArray属性为Array类型，在遍历该属性的Array时，</span><br><span class="line">        collection配置为该属性名stuArray即可。而item属性可以任意指定，</span><br><span class="line">        用来标识每次遍历的元素对象名称，这里记为node,则表示每次遍历的元素的属性时，</span><br><span class="line">        可以使用点操作符,如node.address，node.sex所示。</span><br><span class="line">        需要注意的是，foreach将遍历数组的所有元素，所以每次取该元素的属性前，需要先对该元素对象进行判空(如下所示)</span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;findAddByName5&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;com.aaron.springbootdemo.pojo.UserVo&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;studentResultMap&quot;</span>&gt;</span></span><br><span class="line">        SELECT * FROM user</span><br><span class="line">        <span class="tag">&lt;<span class="name">where</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;sex != null &quot;</span>&gt;</span></span><br><span class="line">                OR sex = #&#123;sex&#125;</span><br><span class="line">            <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">&quot;stuArray&quot;</span> <span class="attr">item</span>=<span class="string">&quot;node&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;node != null&quot;</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;node.address != null&quot;</span>&gt;</span></span><br><span class="line">                        OR address = #&#123;node.address&#125;</span><br><span class="line">                    <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;node.username != null&quot;</span>&gt;</span></span><br><span class="line">                        OR username = #&#123;node.username&#125;</span><br><span class="line">                    <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;node.sex != null&quot;</span>&gt;</span></span><br><span class="line">                        OR sex = #&#123;node.sex&#125;</span><br><span class="line">                    <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">where</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<h2 id="POJO-属性为-Map"><a href="#POJO-属性为-Map" class="headerlink" title="POJO 属性为 Map"></a>POJO 属性为 Map</h2><p>构造下列一个UserVo对象同时设置一个Map属性，传入service</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">UserVo</span> <span class="variable">userVo</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UserVo</span>();</span><br><span class="line">userVo.setSex(<span class="string">&quot;987&quot;</span>);</span><br><span class="line">Map&lt;String, String&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">map.put(<span class="string">&quot;address&quot;</span>, <span class="string">&quot;Shanghai&quot;</span>);</span><br><span class="line">map.put(<span class="string">&quot;id&quot;</span>, <span class="string">&quot;2&quot;</span>);</span><br><span class="line">map.put(<span class="string">&quot;username&quot;</span>, <span class="string">&quot;Bob&quot;</span>);</span><br><span class="line">userVo.setStuMap(map);</span><br><span class="line">studentService.findAddByName7(userVo);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Mapper接口如下，service将调用该接口方法</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">StudentMapper</span> &#123;</span><br><span class="line">        <span class="keyword">public</span> List&lt;Student&gt; <span class="title function_">findAddByName7</span><span class="params">(UserVo userVo)</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">传入参数为UserVo类型，故映射文件的sql标签parameterType属性配置为UserVo。</span><br><span class="line">        该POJO的stuMap属性为Map类型，在遍历该属性的Map时，collection配置为该属性名stuMap即可。</span><br><span class="line">        由于是Map集合，index、item属性分别表示为该Map集合中的key、value，</span><br><span class="line">        故可以分别用$&#123;k&#125;，#&#123;v&#125;来获取该Map集合中的key、value</span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;findAddByName7&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;com.aaron.springbootdemo.pojo.UserVo&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;studentResultMap&quot;</span>&gt;</span></span><br><span class="line">        SELECT * FROM user</span><br><span class="line">        <span class="tag">&lt;<span class="name">where</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">&quot;#&#123;sex&#125; != null&quot;</span>&gt;</span></span><br><span class="line">                OR sex = #&#123;sex&#125;</span><br><span class="line">            <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">&quot;stuMap&quot;</span> <span class="attr">index</span>=<span class="string">&quot;k&quot;</span> <span class="attr">item</span>=<span class="string">&quot;v&quot;</span>&gt;</span></span><br><span class="line">                OR $&#123;key&#125; = #&#123;value&#125;</span><br><span class="line">            <span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">where</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="Rui 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="Rui 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Rui
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://hrf-666.github.io/2023/09/19/mybatis%20%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6List%E9%9B%86%E5%90%88%E3%80%81map%E9%9B%86%E5%90%88%E3%80%81Array%E6%95%B0%E7%BB%84/" title="mybatis 查询条件List集合、map集合、Array数组">https://hrf-666.github.io/2023/09/19/mybatis 查询条件List集合、map集合、Array数组/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag"># 后端</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/09/19/mybatis%20%E6%9F%A5%E8%AF%A2%E8%BF%94%E5%9B%9EList%E9%9B%86%E5%90%88%E3%80%81map%E9%9B%86%E5%90%88%E3%80%81List%EF%BC%9CMap%EF%BC%9E%E9%9B%86%E5%90%88/" rel="prev" title="mybatis 查询返回List集合、map集合、List＜Map＞集合">
+                  <i class="fa fa-angle-left"></i> mybatis 查询返回List集合、map集合、List＜Map＞集合
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Rui</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">
+  </div>
+
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("03/01/2023 10:00:00"); //此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒.";
+    }
+setInterval("createtime()",250);
+</script>
+
+    </div>
+  </footer>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/hrf-666" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+</body>
+</html>
