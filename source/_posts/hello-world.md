@@ -3,6 +3,7 @@ title: Hello World
 date: 2023-08-08 10:58:00
 tags:
     - 加密
+    - hexo
 categories: 
     - 笔记
     
