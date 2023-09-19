@@ -212,7 +212,7 @@
     <link href="https://hrf-666.github.io/2023/08/08/hello-world/"/>
     <id>https://hrf-666.github.io/2023/08/08/hello-world/</id>
     <published>2023-08-08T02:58:00.000Z</published>
-    <updated>2023-09-19T02:54:08.461Z</updated>
+    <updated>2023-09-19T04:33:41.432Z</updated>
     
     
     <summary type="html">加密文件，请输入密码查看!</summary>
@@ -223,6 +223,10 @@
     
     
     <category term="加密" scheme="https://hrf-666.github.io/tags/%E5%8A%A0%E5%AF%86/"/>
+    
+    <category term="hexo" scheme="https://hrf-666.github.io/tags/hexo/"/>
+    
+    <category term="无关紧要" scheme="https://hrf-666.github.io/tags/%E6%97%A0%E5%85%B3%E7%B4%A7%E8%A6%81/"/>
     
   </entry>
   
