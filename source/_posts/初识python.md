@@ -36,17 +36,23 @@ tags:
 ![image-20230928111728058](https://huang-ruifang.gitee.io/pic-go/public/python/20230928112517.png)
 输入`exit();`进行退出。
 之后就学习python语法
+[python能够用来干什么？](https://zhuanlan.zhihu.com/p/63077993)
 
 ## idea中配置python环境并运行
 参考[idea中配置python环境并运行](https://blog.csdn.net/zl18603543572/article/details/122260908)
 ## 我的idea是2022版和上一个有点区别
 参考[在IDEA2022中下载Python，并新建一个Python文件（将IDEA配置成中文界面）](https://blog.csdn.net/qq_52674444/article/details/125611085)
-
 ## VSCode搭建Python开发环境(含Python环境搭建)
 参考[VSCode搭建Python开发环境(含Python环境搭建)](https://blog.csdn.net/zl18603543572/article/details/122260908)
 添加插件时遇到错误：
 [Python][VsCode]报错 python：命令“Python:Select:Interpreter“ command ‘python.setInterpreter‘ not found
 [参考文章](https://blog.csdn.net/m0_56738500/article/details/127144144)
+
+## 学习python
+参考[Python Flask Web 框架入门](https://www.cnblogs.com/cleven/p/10858016.html)
+
+
+  
 
 
 
